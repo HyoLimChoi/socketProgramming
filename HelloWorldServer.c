@@ -63,27 +63,32 @@ main( )
 			}else if(strcasecmp(rcvBuffer," I want IPhoneX")==0){
 				strcpy(buffer,"me too");
 			}else if(strncmp(rcvBuffer,"strlen",6)==0){ //문자열 길이 출력 문
-				int sum=0;
-				while(token!=NULL){									
-					if (strcmp(token, "strlen")<0)
-						sum += strlen(token);				
-					token=strtok(NULL," ");
-					sum++;
+				int result=0
+				token = strtok(NULL, " ");
+				result += strlen(token);
+				token = strtok(NULL, " ");
+		
+				while (token != NULL) {
+					result += strlen(token);
+					token = strtok(NULL, " ");
+					result++; //여백크기 포함용
+		}	
 				}			
-				sprintf(buffer,"%s 문자열의 길이는 %d입니다.\n",token,sum-2);
+				sprintf("%s 문자열의 길이는 %d입니다.\n",result);
 			}else if(strncmp(rcvBuffer, "strcmp", 6) == 0){ //두개의 문자열 비교
 				int cnt = 0;
 				char temp[100], temp2[100];
-				while (token != NULL) {
-					if (cnt != 0) {
-						if (cnt == 1)
+					if ((strcmp(arr, "strcmp")) == 0) {
+						token = strtok(NULL, " ");
+
+						for (int i = 0; i < 2; i++) {
+							if (i == 0)
 							strcpy(temp, token);
-						else
+							else
 							strcpy(temp2, token);
+						token = strtok(NULL, " ");
+						}
 					}
-					cnt++;
-					token = strtok(NULL, " ");
-				}
 				if (strcmp(temp, temp2) == 0){
 					sprintf(buffer,"%s와 %s는 같은 문자열입니다.\n",temp,temp2);
 				}
