@@ -65,12 +65,12 @@ main( )
 			}else if(strncmp(rcvBuffer,"strlen",6)==0){ //문자열 길이 출력 문
 				int sum=0;
 				while(token!=NULL){									
-					if (strcmp(token, "strlen")!=0)
+					if (strcmp(token, "strlen")<0)
 						sum += strlen(token);				
 					token=strtok(NULL," ");
 					sum++;
 				}			
-				sprintf(buffer,"String length is : %d\n",sum-2);
+				sprintf(buffer,"%s 문자열의 길이는 %d입니다.\n",token,sum-2);
 			}else if(strncmp(rcvBuffer, "strcmp", 6) == 0){ //두개의 문자열 비교
 				int cnt = 0;
 				char temp[100], temp2[100];
