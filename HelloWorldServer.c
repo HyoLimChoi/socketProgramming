@@ -76,7 +76,7 @@ main( )
 					token = strtok(NULL, " ");
 					result++; //여백크기 포함용
 				}	
-				sprintf("%s 문자열의 길이는 %d입니다.\n",result);
+				sprintf(buffer,"%s 문자열의 길이는 %d입니다.\n",result);
 			}else if(strncmp(rcvBuffer, "strcmp", 6) == 0){ //두개의 문자열 비교
 				int cnt = 0;
 				int i=0
