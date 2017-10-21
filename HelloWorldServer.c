@@ -76,26 +76,23 @@ main( )
 					token = strtok(NULL, " ");
 					result++; //여백크기 포함용
 				}	
-				sprintf(buffer,"%s 문자열의 길이는 %d입니다.\n",result);
+				sprintf(buffer,"문자열의 길이는 %d입니다.\n",result);
 			}else if(strncmp(rcvBuffer, "strcmp", 6) == 0){ //두개의 문자열 비교
 				int cnt = 0;
 				int i=0
 				char temp[100], temp2[100];
-					if ((strcmp(rcvBuffer, "strcmp")) == 0) {
-						token = strtok(NULL, " "); //strcmp 다음 문자열 확인을 위해 자르기
+				token = strtok(NULL, " "); //strcmp 다음 문자열 확인을 위해 자르기
 
-						for (i = 0; i < 2; i++) {
-							if (i == 0)
-							strcpy(temp, token); //한번은 strcmp 바로 다음 문자열 
-							else
-							strcpy(temp2, token); //다음은 앞 문자열과 비교 할 문자열 복사
-						token = strtok(NULL, " ");
-						}
-					}
+				for (i = 0; i < 2; i++) {
+					if (i == 0)
+						strcpy(temp, token); //한번은 strcmp 바로 다음 문자열 
+					else
+						strcpy(temp2, token); //다음은 앞 문자열과 비교 할 문자열 복사
+					token = strtok(NULL, " ");
+				}
 				if (strcmp(temp, temp2) == 0){
 					sprintf(buffer,"%s와 %s는 같은 문자열입니다.\n",temp,temp2);
-				}
-				else
+				}else
 					sprintf(buffer,"%s와 %s는 다른 문자열입니다.\n",temp,temp2);
 
 			}
