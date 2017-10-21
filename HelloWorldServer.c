@@ -62,16 +62,16 @@ main( )
 				strcpy(buffer,"Secret!haha");
 			}else if(strcasecmp(rcvBuffer," I want IPhone")==0){
 				strcpy(buffer,"me too");
-			}else if(strncmp(rcvBuffer,"strlen",6)==0){ //¹®ÀÚ¿­ ±æÀÌ Ãâ·Â ¹®
+			}else if(strncmp(rcvBuffer,"strlen",6)==0){ //ë¬¸ìì—´ ê¸¸ì´ ì¶œë ¥ ë¬¸
 				int sum=0;
 				while(token!=NULL){									
-					if (!strcmp(token, "strlen")
+					if (strcmp(token, "strlen")!=0)
 						sum += strlen(token);				
-					token=strtok(NULL,s);
+					token=strtok(NULL," ");
 					sum++;
 				}			
 				printf("String length is : %d\n",sum-2);
-			}else if(strncmp(rcvBuffer, "strcmp", 6) == 0){ //µÎ°³ÀÇ ¹®ÀÚ¿­ ºñ±³
+			}else if(strncmp(rcvBuffer, "strcmp", 6) == 0){ //ë‘ê°œì˜ ë¬¸ìì—´ ë¹„êµ
 				int cnt = 0;
 				char temp[100], temp2[100];
 				while (token != NULL) {
@@ -90,7 +90,7 @@ main( )
 					printf("Two stirng is different\n");
 
 			}
-			else if (strncmp(rcvBuffer, "readfile", 8) == 0) { //ÆÄÀÏ ÀĞ±â ¿ë
+			else if (strncmp(rcvBuffer, "readfile", 8) == 0) { //íŒŒì¼ ì½ê¸° ìš©
 				FILE * f;
 				char temp[255];
 				int cnt = 0;
@@ -98,7 +98,7 @@ main( )
 					if (cnt != 0) {
 						f = fopen(token, "r");
 						if (f == NULL)
-							printf("ÆÄÀÏ ¾øÀ½!");
+							printf("íŒŒì¼ ì—†ìŒ!");
 						else {
 							while (fgets(temp, sizeof(temp), (FILE *)f))
 							{
