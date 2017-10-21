@@ -70,7 +70,7 @@ main( )
 					token=strtok(NULL," ");
 					sum++;
 				}			
-				printf("String length is : %d\n",sum-2);
+				sprintf(buffer,"String length is : %d\n",sum-2);
 			}else if(strncmp(rcvBuffer, "strcmp", 6) == 0){ //두개의 문자열 비교
 				int cnt = 0;
 				char temp[100], temp2[100];
@@ -99,9 +99,8 @@ main( )
 					if (cnt != 0) {
 						f = fopen(token, "r");
 						if (f == NULL)
-							printf("파일 없음!\n");
+							sprintf(buffer,"파일 없음!\n");
 						else {
-							printf("reading...\n");
 							while (fgets(temp, sizeof(temp), (FILE *)f))
 							{
 								printf("%s", temp);
