@@ -84,10 +84,11 @@ main( )
 					cnt++;
 					token = strtok(NULL, " ");
 				}
-				if (strcmp(temp, temp2) == 0)
-					strcpy(buffer,"같은 문자열입니다.\n");
+				if (strcmp(temp, temp2) == 0){
+					sprintf(buffer,"%s와 %s는 같은 문자열입니다.\n",temp,temp2);
+				}
 				else
-					strcpy(buffer,"다른 문자열입니다.\n");
+					sprintf(buffer,"%s와 %s는 다른 문자열입니다.\n",temp,temp2);
 
 			}
 			else if (strncmp(rcvBuffer, "readfile", 8) == 0) { //파일 읽기 용
