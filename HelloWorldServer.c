@@ -98,8 +98,9 @@ main( )
 					if (cnt != 0) {
 						f = fopen(token, "r");
 						if (f == NULL)
-							printf("파일 없음!");
+							printf("파일 없음!\n");
 						else {
+							printf("reading...\n");
 							while (fgets(temp, sizeof(temp), (FILE *)f))
 							{
 								printf("%s", temp);
