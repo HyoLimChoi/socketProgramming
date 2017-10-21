@@ -60,7 +60,7 @@ main( )
 				strcpy(buffer,"what?!");
 			}else if(strcasecmp(rcvBuffer, "How old are you??")==0){
 				strcpy(buffer,"Secret!haha");
-			}else if(strcasecmp(rcvBuffer," I want IPhone")==0){
+			}else if(strcasecmp(rcvBuffer," I want IPhoneX")==0){
 				strcpy(buffer,"me too");
 			}else if(strncmp(rcvBuffer,"strlen",6)==0){ //문자열 길이 출력 문
 				int sum=0;
