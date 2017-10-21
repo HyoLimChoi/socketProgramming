@@ -85,7 +85,7 @@ main( )
 					token = strtok(NULL, " ");
 				}
 				if (strcmp(temp, temp2) == 0)
-					printf("Two stirng is same.\n");
+					strcpy(buffer,"    ..\n");
 				else
 					printf("Two stirng is different\n");
 
@@ -116,7 +116,7 @@ main( )
 			n = strlen(buffer);
 			sleep(SLEEPTIME);
 			write(c_socket, buffer, n);
-			//printf("Send Data: %s\n", buffer);
+			printf("Send Data: %s\n", buffer);
 			//write(c_socket, rcvBuffer, strlen(rcvBuffer));
 			//printf("Send Data: %s\n", rcvBuffer);
 		}
