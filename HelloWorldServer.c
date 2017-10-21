@@ -85,9 +85,9 @@ main( )
 					token = strtok(NULL, " ");
 				}
 				if (strcmp(temp, temp2) == 0)
-					strcpy(buffer,"    ..\n");
+					strcpy(buffer,"같은 문자열입니다.\n");
 				else
-					printf("Two stirng is different\n");
+					strcpy(buffer,"다른 문자열입니다.\n");
 
 			}
 			else if (strncmp(rcvBuffer, "readfile", 8) == 0) { //파일 읽기 용
