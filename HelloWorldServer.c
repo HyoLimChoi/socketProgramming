@@ -79,7 +79,7 @@ main( )
 				sprintf(buffer,"문자열의 길이는 %d입니다.\n",result);
 			}else if(strncmp(rcvBuffer, "strcmp", 6) == 0){ //두개의 문자열 비교
 				int cnt = 0;
-				int i=0
+				int i=0;
 				char temp[100], temp2[100];
 				token = strtok(NULL, " "); //strcmp 다음 문자열 확인을 위해 자르기
 
