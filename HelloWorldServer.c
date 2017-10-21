@@ -95,15 +95,19 @@ main( )
 				FILE * f;
 				char temp[255];
 				int cnt = 0;
+				int i=0;
 				while (token != NULL) {
 					if (cnt != 0) {
 						f = fopen(token, "r");
 						if (f == NULL)
 							sprintf(buffer,"파일 없음!\n");
 						else {
-							while (fgets(temp, sizeof(temp), (FILE *)f))
+							while(1)
 							{
-								printf("%s", temp);
+								if(fscanf(f,"%s",temp==EOF)
+								   break;
+								 
+								i+=sprintf(buffer+i,"%s",temp);  
 							}
 						}
 					}
