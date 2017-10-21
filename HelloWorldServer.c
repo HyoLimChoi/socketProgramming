@@ -64,28 +64,29 @@ main( )
 				strcpy(buffer,"me too");
 			}else if(strncmp(rcvBuffer,"strlen",6)==0){ //문자열 길이 출력 문
 				int result=0
-				token = strtok(NULL, " ");
-				result += strlen(token);
-				token = strtok(NULL, " ");
+				token = strtok(NULL, " "); //strlen 다음 입력한 문자열 확인을 위해 한번 자르기
+				result += strlen(token); //strlen 다음 입력한 문자열 길이 확인
+				token = strtok(NULL, " "); //그 다음 띄어쓰기 있는지 확인하기
 		
+				//만약에 띄어쓰기 다음이 존재한다면 그 문자열 길이 추가
 				while (token != NULL) {
 					result += strlen(token);
 					token = strtok(NULL, " ");
 					result++; //여백크기 포함용
-		}	
-				}			
+				}	
+			}			
 				sprintf("%s 문자열의 길이는 %d입니다.\n",result);
 			}else if(strncmp(rcvBuffer, "strcmp", 6) == 0){ //두개의 문자열 비교
 				int cnt = 0;
 				char temp[100], temp2[100];
 					if ((strcmp(arr, "strcmp")) == 0) {
-						token = strtok(NULL, " ");
+						token = strtok(NULL, " "); //strcmp 다음 문자열 확인을 위해 자르기
 
 						for (int i = 0; i < 2; i++) {
 							if (i == 0)
-							strcpy(temp, token);
+							strcpy(temp, token); //한번은 strcmp 바로 다음 문자열 
 							else
-							strcpy(temp2, token);
+							strcpy(temp2, token); //다음은 앞 문자열과 비교 할 문자열 복사
 						token = strtok(NULL, " ");
 						}
 					}
@@ -101,25 +102,21 @@ main( )
 				char temp[255];
 				int cnt = 0;
 				int i=0;
-				while (token != NULL) {
-					if (cnt != 0) {
-						f = fopen(token, "r");
-						if (f == NULL)
-							sprintf(buffer,"파일 없음!\n");
-						else {
-							while(1)
-							{
-								if(fscanf(f,"%s",temp)==EOF){
-								   break;
-								}
-								 
-								i+=sprintf(buffer+i,"%s",temp);  
-							}
+				token = strtok(NULL, " "); //readfile 다음 입력한 문자열 확인을 위해 자르기
+				f = fopen(token, "r"); //"r" 파일읽기 호출
+
+				if (f == NULL) //파일이 없을 시 없음 출력
+					sprintf(buffer,"파일이 존재하지 않습니다.\n");
+				else {
+					while (1)
+					{
+						if (fscanf(f, "%s", temp) == EOF) 
+						{
+						break;
 						}
+					i += sprintf(buffer + i, "%s\n", temp);
 					}
-					token = strtok(NULL, " ");
-					cnt++;
-				}
+				    }
 			}else {
 				strcpy(buffer, "I don't understand what you say.");
 			}
