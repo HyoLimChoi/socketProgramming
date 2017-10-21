@@ -100,7 +100,7 @@ main( )
 				FILE * f;
 				char temp[255];
 				int cnt = 0;
-				i=0;
+				int i=0;
 				token = strtok(NULL, " "); //readfile 다음 입력한 문자열 확인을 위해 자르기
 				f = fopen(token, "r"); //"r" 파일읽기 호출
 
