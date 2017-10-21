@@ -104,8 +104,9 @@ main( )
 						else {
 							while(1)
 							{
-								if(fscanf(f,"%s",temp==EOF)
+								if(fscanf(f,"%s",temp)==EOF){
 								   break;
+								}
 								 
 								i+=sprintf(buffer+i,"%s",temp);  
 							}
