@@ -47,7 +47,7 @@ main( )
         		}
 			printf("Received Data From Client: %s\n", rcvBuffer);
 			
-			char * token=strtok(rcvBuffer," ");	
+			
 			
 			if(strcasecmp(rcvBuffer, "quit") == 0){
 				break;
@@ -67,6 +67,7 @@ main( )
 				strcpy(buffer,"me too");
 			}else if(strncmp(rcvBuffer,"strlen",6)==0)
 			{ //문자열 길이 출력 문
+				char * token=strtok(rcvBuffer," ");	
 				int result=0;
 				token = strtok(NULL, " "); //strlen 다음 입력한 문자열 확인을 위해 한번 자르기
 				result += strlen(token); //strlen 다음 입력한 문자열 길이 확인
@@ -81,6 +82,7 @@ main( )
 				}	
 				sprintf(buffer,"문자열의 길이는 %d입니다.\n",result);
 			}else if(strncmp(rcvBuffer, "strcmp", 6) == 0){ //두개의 문자열 비교
+				char * token=strtok(rcvBuffer," ");	
 				int cnt = 0;
 				int i=0;
 				char temp[100], temp2[100];
@@ -101,6 +103,7 @@ main( )
 			}
 			else if (strncmp(rcvBuffer, "readfile", 8) == 0) { //파일 읽기 용
 				FILE * f;
+				char * token=strtok(rcvBuffer," ");	
 				char temp[255];
 				int cnt = 0;
 				int i=0;
