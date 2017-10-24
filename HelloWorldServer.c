@@ -39,13 +39,16 @@ main( )
 		c_socket = accept(s_socket, (struct sockaddr *) &c_addr, &len);
 		printf("Client is Connected\n");
 		while(1){		
-			char * token=strtok(rcvBuffer," ");	
+			
 
 			memset(rcvBuffer, 0, BUFSIZE);
 			if((readSize = read(c_socket, rcvBuffer, sizeof(rcvBuffer))) < 0) {
                	 		return -1;
         		}
 			printf("Received Data From Client: %s\n", rcvBuffer);
+			
+			char * token=strtok(rcvBuffer," ");	
+			
 			if(strcasecmp(rcvBuffer, "quit") == 0){
 				break;
 			}else if(strcasecmp(rcvBuffer, "hello") == 0){
@@ -116,6 +119,8 @@ main( )
 					i += sprintf(buffer + i, "%s\n", temp);
 					}
 				    }
+				
+				fclose(f);
 			}else {
 				strcpy(buffer, "I don't understand what you say.");
 			}
