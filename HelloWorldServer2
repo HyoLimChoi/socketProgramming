@@ -123,7 +123,7 @@ main( )
 				    }
 				
 				fclose(f);
-			}else if(strncmp(rcvBuffer, "ls", 2) == 0) { //추가중
+			}else if(strncasecmp(rcvBuffer, "ls", 2) == 0) { //추가중
 				char * token=strtok(rcvBuffer," ");
 				
 				DIR *dp;
@@ -145,6 +145,14 @@ main( )
 				}
 				
 				closedir(dp);
+			}else if(strncasecmp(rcvBuffer, "exec", 4) == 0) { //추가중
+				token = strtok(NULL, " ");
+				char * command;
+				command=strtok(NULL,"\0");
+				printf("command : %s\n",command);
+				int result=system(command);
+				printf("result : %d \n",result);
+				
 			}
 			n = strlen(buffer);
 			sleep(SLEEPTIME);
