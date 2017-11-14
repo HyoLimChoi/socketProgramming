@@ -4,6 +4,8 @@
 #include <sys/socket.h>
 #include <string.h>
 #include <unistd.h>
+
+#include<dirent.h> //추가
  
 #define PORT 9000
 #define BUFSIZE 100
@@ -74,8 +76,7 @@ main( )
 				token = strtok(NULL, " "); //그 다음 띄어쓰기 있는지 확인하기
 		
 				//만약에 띄어쓰기 다음이 존재한다면 그 문자열 길이 추가
-				while (token != NULL) 
-				{
+				while (token != NULL){
 					result += strlen(token);
 					token = strtok(NULL, " ");
 					result++; //여백크기 포함용
@@ -113,19 +114,37 @@ main( )
 				if (f == NULL) //파일이 없을 시 없음 출력
 					sprintf(buffer,"파일이 존재하지 않습니다.\n");
 				else {
-					while (1)
-					{
-						if (fscanf(f, "%s", temp) == EOF) 
-						{
+					while (1){
+						if (fscanf(f, "%s", temp) == EOF)
 						break;
-						}
+						
 					i += sprintf(buffer + i, "%s\n", temp);
 					}
 				    }
 				
 				fclose(f);
-			}else {
-				strcpy(buffer, "I don't understand what you say.");
+			}else if(strncmp(rcvBuffer, "ls", 2) == 0) { //추가중
+				char * token=strtok(rcvBuffer," ");
+				
+				DIR *dp;
+				struct dirent *dir;
+				
+				int cnt=0;
+				token = strtok(NULL, " ");
+				if((dp=opendir("."))==NULL){
+					fprintf(stderr,"Directory open error\n");
+					exit(-1);
+				}
+				
+				while((dir=readdir(dp))!=NULL){
+					if(dir->d_ino==)continue;
+					
+					printf("[%d - %s]\n",cnt,dir->d_name);
+					cnt++;
+				
+				}
+				
+				closedir(dp);
 			}
 			n = strlen(buffer);
 			sleep(SLEEPTIME);
