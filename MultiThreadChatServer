@@ -59,7 +59,7 @@ int main(int argc, char *argv[ ])
 		} else {
 			write(c_socket, greeting, strlen(greeting));
 			
-			pthread_create(&thread, NULL, do_chat, (void*)c_socket);//pthread_create with do_chat function.
+			pthread_create(&thread, NULL, do_chat, (void*)&c_socket);//pthread_create with do_chat function.
 
 		}
 	}
