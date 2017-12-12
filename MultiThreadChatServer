@@ -99,7 +99,7 @@ int pushClient(int c_socket) {
 			pthread_mutex_unlock(&mutex);
 			return i;
 		}
-		pthread_mutex_unlock(&mutex)
+		pthread_mutex_unlock(&mutex);
 	}
 	
 	
@@ -122,5 +122,5 @@ int popClient(int c_socket)
 		}
 		pthread_mutex_unlock(&mutex);
 	}
-	ruturn 0;
+	return 0;
 }
