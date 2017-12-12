@@ -40,8 +40,8 @@ int main(int argc, char *argv[ ])
 		return -1;	
 	}
 
-	pthread_create(&thread_1, NULL, do_send_chat, (void*)c_socket);
-	pthread_create(&thread_2, NULL, do_receive_chat, (void*)c_socket);
+	pthread_create(&thread_1, NULL, do_send_chat, (void*)&c_socket);
+	pthread_create(&thread_2, NULL, do_receive_chat, (void*)&c_socket);
 	pthread_join(thread_1,NULL);
 	pthread_join(thread_2, NULL);
 
